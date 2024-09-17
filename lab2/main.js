@@ -1,4 +1,4 @@
-//import { compileShader, initCanvas, linkProgram } from 'mv-redux/init';
+import { compileShader, initCanvas, linkProgram } from 'lib/mv-redux/init';
 import vertShaderSource from './shaders/triangle.vert';
 import fragShaderSource from './shaders/triangle.frag';
 
