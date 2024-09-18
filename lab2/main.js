@@ -29,6 +29,8 @@ const fragShaderSource = [
     '}'
 ].join('\n');
 
+console.log('k');
+
 const canvas = document.querySelector('canvas');
 const gl = initCanvas(canvas);
 
