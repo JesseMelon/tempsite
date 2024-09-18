@@ -54,7 +54,6 @@ const t2Vertices = [
 
 // Configure viewport:
 gl.viewport(0, 0, canvas.width, canvas.height);
-gl.clearColor(0.7, 0.7, 0.7, 1.0);
 
 // Compile and setup our program:
 const vertShader = compileShader(gl, gl.VERTEX_SHADER, vertShaderSource);
@@ -95,7 +94,7 @@ var angle;
 var offset;
 var loop = function () {
     angle = performance.now() / 1000 * Math.PI 
-    gl.clearColor(1.0,1.0,1.0,1.0)
+    gl.clearColor(0.7, 0.7, 0.7, 1.0);
     gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
 
     // Draw triangle #1
