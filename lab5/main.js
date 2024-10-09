@@ -8,13 +8,13 @@ gl.cullFace(gl.BACK);
 
 const renderer = new MelonEngine.Renderer(gl);
 const camera = new MelonEngine.Camera({aspectRatio: canvas.width/canvas.height});
-const pyramidMesh = new MelonEngine.Mesh(gl, Pyramid.positions, Pyramid.colors, Pyramid.faces);
+const pyramidMesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.defaultcolors, Pyramid.indices);
 const programInstance = new MelonEngine.ProgramInstance(gl); //invokes default mode
 const pyramid = new MelonEngine.MeshInstance(pyramidMesh, programInstance, renderer, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
 
 function draw(time = 0) {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    pyramid.updateModelMatrix(
+    pyramid.setModelMatrix(
         vec3FromSliders(menu.position),
         vec3ToRadians(vec3FromSliders(menu.rotation)),
         vec3FromSliders(menu.scale)

@@ -1,47 +1,14 @@
-// Define vertices, colors, and indices for a cube
-const vertices = new Float32Array([
-    -1, -1,  1, // 0
-     1, -1,  1, // 1
-     1,  1,  1, // 2
-    -1,  1,  1, // 3
-    -1, -1, -1, // 4
-     1, -1, -1, // 5
-     1,  1, -1, // 6
-    -1,  1, -1, // 7
+const funTetrahedronColors = new Float32Array([
+    1.0, 0.0, 0.0, 1.0,  // Red
+    0.0, 1.0, 0.0, 1.0, // Green
+    0.0, 0.0, 1.0, 1.0, // Blue
+    1.0, 1.0, 0.0, 1.0 // Yellow
 ]);
 
-const colors = new Float32Array([
-    1, 0, 0, 1, // Red
-    0, 1, 0, 1, // Green
-    0, 0, 1, 1, // Blue
-    1, 1, 0, 1, // Yellow
-    1, 0, 1, 1, // Magenta
-    0, 1, 1, 1, // Cyan
-    1, 1, 1, 1, // White
-    0, 0, 0, 1, // Black
-]);
-
-const indices = new Uint16Array([
-    // Front face
-    0, 1, 2, 0, 2, 3,
-    // Back face
-    4, 6, 5, 4, 7, 6,
-    // Left face
-    4, 5, 1, 4, 1, 0,
-    // Right face
-    1, 5, 6, 1, 6, 2,
-    // Top face
-    3, 2, 6, 3, 6, 7,
-    // Bottom face
-    4, 0, 3, 4, 3, 7,
-]);
-
-// Create WebGL context
 const canvas = document.querySelector('canvas');
-
-//TODO should maybe make this a function in MelonEngine
 const gl = initCanvas(canvas);
 //TODO use gl.viewport for dynamic sizing or something (seems easy)
+gl.viewport(0, 0, canvas.width, canvas.height);
 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 gl.enable(gl.DEPTH_TEST);
 gl.enable(gl.CULL_FACE);
@@ -52,18 +19,29 @@ gl.clearColor(0.0, 0.0, 0.0, 1.0);
 const renderer = new MelonEngine.Renderer(gl);
 const camera = new MelonEngine.Camera({aspectRatio: canvas.width/canvas.height});
 // Create objects
-const cubeMesh = new MelonEngine.Mesh(gl, vertices, colors, indices);
-const programInstance = new MelonEngine.ProgramInstance(gl); //default shaders invoked
-const cubeInstance = new MelonEngine.MeshInstance(cubeMesh, programInstance, renderer, [0, 0, 0], [0, 0, 0], [1, 1, 1]);
+const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.defaultcolors, Cube.indices);
+const tetraMesh = new MelonEngine.Mesh(gl, Pyramid.vertices, funTetrahedronColors, Pyramid.indices)
+const programInstance = new MelonEngine.ProgramInstance(gl); //default shader invoked (indexed)
+const cubeInstance = new MelonEngine.MeshInstance(cubeMesh, programInstance, renderer, [-1.5, 1, -1], [0, 0, 0], [1, 1, 1]);
+const cubeInstance2 = new MelonEngine.MeshInstance(cubeMesh, programInstance, renderer, [1.5, 1, -1], [0,0,0], [1,1,1]);
+const tetraInstance = new MelonEngine.MeshInstance(tetraMesh, programInstance, renderer, [-1.5,-1,-1], [0,0,0], [1.25,1.25,1.25]);
+const tetraInstance2 = new MelonEngine.MeshInstance(tetraMesh, programInstance, renderer, [1.5,-1,-1], [0,0,0], [1.25,1.25,1.25]);
 
+//2 meshes, one program, 4 instances, how do ya like them apples.
 
-
-let angle = 0;
+let angle = 0.015;
 // Render loop
 function render() {
-    angle += 0.015
-    cubeInstance.updateModelMatrix([0,0,0], [0,angle,0],[1,1,1]);
-    renderer.render(gl, camera); // Pass a camera instance
+    cubeInstance.rotateY(angle);
+    cubeInstance.rotateZ(-angle);
+    cubeInstance2.rotateX(angle);
+    cubeInstance2.rotateZ(angle);
+    tetraInstance.rotateY(angle);
+    tetraInstance.rotateX(angle)
+    tetraInstance2.rotateY(-angle);
+    tetraInstance2.rotateZ(angle);
+
+    renderer.render(gl, camera);
     requestAnimationFrame(render);
 }
 
