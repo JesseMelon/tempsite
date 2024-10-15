@@ -7,7 +7,6 @@ const funTetrahedronColors = new Float32Array([
 
 const canvas = document.querySelector('canvas');
 const gl = initCanvas(canvas);
-//TODO use gl.viewport for dynamic sizing or something (seems easy)
 gl.viewport(0, 0, canvas.width, canvas.height);
 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 gl.enable(gl.DEPTH_TEST);
