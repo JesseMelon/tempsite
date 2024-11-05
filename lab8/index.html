@@ -6,8 +6,6 @@
     <script src="../lib/gl-matrix/gl-matrix-min.js" defer></script>
     <script src="./menu.js" defer></script>
     <script src="../lib/shapes/cube.js" defer></script>
-    <script src="../lib/shapes/icosphere" defer></script>
-    <script src="../lib/shapes/torus.js" defer></script>
     <script src="../lib/util/util.js" defer></script>
 
     <script src="../lib/engine/melonEngine.js" defer></script>
@@ -20,47 +18,47 @@
     <script src="../lib/engine/melonEngineLight.js" defer></script>
     <script src="../lib/engine/melonEngineTransform.js" defer></script>
 
+    <img id="cubeTexture" src="./textures/terrain.png" style="display: none;">
+
     <script src="./main.js" defer></script>
     <link rel="stylesheet" href="./menu.css">
-    <title>Lab 7</title>
+    <title>Lab 8</title>
 </head>
 <body>
     <canvas width="512" height="512"></canvas>
 
-    <form class="menu" id="cam-menu">
+    <form class="menu" id="tex-menu">
         <div class="group">
             <p>
-                <label for="cx">Camera <i>x</i>-position</label>
-                <input id="cx" type="range" min="-15" max="15" step="0.25" value="3.0">
-                <span aria-hidden="true">3.00</span>
+                <input type="checkbox" id="rotate-x">
+                <label for="rotate-x">Rotate around <i>x</i></label>
             </p>
             <p>
-                <label for="cy">Camera <i>y</i>-position</label>
-                <input id="cy" type="range" min="-15" max="15" step="0.25" value="2.5">
-                <span aria-hidden="true">2.50</span>
+                <input type="checkbox" id="rotate-y">
+                <label for="rotate-y">Rotate around <i>y</i></label>
             </p>
             <p>
-                <label for="cz">Camera <i>z</i>-position</label>
-                <input id="cz" type="range" min="-15" max="15" step="0.25" value="3.0">
-                <span aria-hidden="true">3.00</span>
+                <input type="checkbox" id="rotate-z">
+                <label for="rotate-z">Rotate around <i>z</i></label>
             </p>
         </div>
         <hr>
         <div class="group">
             <p>
-                <label for="lx">Light <i>x</i>-position</label>
-                <input id="lx" type="range" min="-15" max="15" step="0.25" value="3">
-                <span aria-hidden="true">3.00</span>
+                <label for="tex-x-offset">Texture <i>x</i>-offset</label>
+                <input id="tex-x-offset" type="number" value="0">
             </p>
             <p>
-                <label for="ly">Light <i>y</i>-position</label>
-                <input id="ly" type="range" min="-15" max="15" step="0.25" value="4">
-                <span aria-hidden="true">4.00</span>
+                <label for="tex-y-offset">Texture <i>y</i>-offset</label>
+                <input id="tex-y-offset" type="number" value="0">
             </p>
             <p>
-                <label for="lz">Light <i>z</i>-position</label>
-                <input id="lz" type="range" min="-15" max="15" step="0.25" value="1">
-                <span aria-hidden="true">1.00</span>
+                <label for="tex-x-scale">Texture <i>x</i>-scale</label>
+                <input id="tex-x-scale" type="number" value="1">
+            </p>
+            <p>
+                <label for="tex-y-scale">Texture <i>y</i>-scale</label>
+                <input id="tex-y-scale" type="number" value="1">
             </p>
         </div>
     </form>

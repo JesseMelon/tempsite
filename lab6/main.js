@@ -11,7 +11,7 @@ gl.clearColor(0.4, 0.4, 0.4, 1.0);
 const renderer = new MelonEngine.Renderer(gl);
 const camera = new MelonEngine.Camera({aspectRatio: canvas.width/canvas.height});
 
-const mesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.defaultcolors, Pyramid.indices);
+const mesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.indices, {colors: Pyramid.defaultcolors});
 const program = new MelonEngine.ProgramInstance(gl); //default shader invoked (indexed)
 const meshInstances = [
     new MelonEngine.MeshInstance(mesh, program, renderer, [0,0,0], [-Math.PI, 0, 0])
