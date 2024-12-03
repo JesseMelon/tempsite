@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!----> <script src="../lib/gl-matrix/gl-matrix-min.js" defer></script>
+    <script src="../lib/util/util.js" defer></script>
+
+    <script src="../lib/engine/melonEngine.js" defer></script>
+    <script src="../lib/engine/melonEngineCamera.js" defer></script>
+    <script src="../lib/engine/melonEngineMesh.js" defer></script>
+    <script src="../lib/engine/melonEngineMeshInstance.js" defer></script>
+    <script src="../lib/engine/melonEngineProgramInstance.js" defer></script>
+    <script src="../lib/engine/melonEngineRenderer.js" defer></script>
+    <script src="../lib/engine/melonEngineSceneLighting.js" defer></script>
+    <script src="../lib/engine/melonEngineLight.js" defer></script>
+    <script src="../lib/engine/melonEngineScene.js" defer></script>
+    <script src="../lib/engine/melonEngineTransform.js" defer></script>
+    
+    <script src="../lib/shapes/cube.js" defer></script> 
+    <script src="./menu.js" defer></script>
+    <script src="./main.js" defer></script>
+    <title>Assignment2</title>
+</head>
+<body>
+    <canvas width="512" height="512"></canvas>
+
+    <form class="menu" id="controls">
+        <div>
+            <button type="button" id="toggleCamera">Toggle camera</button>
+        </div>
+
+        <!-- Tank Controls -->
+        <fieldset>
+            <legend>Tank Controls</legend>
+            <div>
+                <label for="tankX">Tank X-position:</label>
+                <input type="range" id="tankX" min="-1" max="1" step="0.05" value="0">
+            </div>
+            <div>
+                <label for="tankY">Tank Y-position:</label>
+                <input type="range" id="tankY" min="-1" max="1" step="0.05" value="0">
+            </div>
+            <div>
+                <label for="tankScale">Tank Scale:</label>
+                <input type="range" id="tankScale" min="0.05" max="2" step="0.05" value="1">
+            </div>
+            <div>
+                <label for="tankRotation">Tank Rotation:</label>
+                <input type="range" id="tankRotation" min="-180" max="180" step="5" value="0">
+            </div>
+        </fieldset>
+
+        <!-- Turret Controls -->
+        <fieldset>
+            <legend>Turret Controls</legend>
+            <div>
+                <label for="turretRotation">Turret Rotation:</label>
+                <input type="range" id="turretRotation" min="-180" max="180" step="5" value="0">
+            </div>
+            <div>
+                <label for="turretScale">Turret Scale:</label>
+                <input type="range" id="turretScale" min="0" max="2" step="0.05" value="1">
+            </div>
+        </fieldset>
+
+        <!-- Cannon Controls -->
+        <fieldset>
+            <legend>Cannon Controls</legend>
+            <div>
+                <label for="canonAngle">Cannon Angle:</label>
+                <input type="range" id="canonAngle" min="-90" max="90" step="1" value="0">
+            </div>
+            <div>
+                <label for="canonScale">Cannon Scale:</label>
+                <input type="range" id="canonScale" min="0" max="2" step="0.05" value="1">
+            </div>
+        </fieldset>
+
+        <!-- Crates Controls -->
+        <fieldset>
+            <legend>Crates Controls</legend>
+            <div>
+                <label for="cratesX">Crates X-position:</label>
+                <input type="range" id="cratesX" min="-1" max="1" step="0.05" value="0">
+            </div>
+            <div>
+                <label for="cratesY">Crates Y-position:</label>
+                <input type="range" id="cratesY" min="-1" max="1" step="0.05" value="0">
+            </div>
+            <div>
+                <label for="crate1Z">Crate1 Z-position:</label>
+                <input type="range" id="crate1Z" min="-1" max="1" step="0.05" value="0">
+            </div>
+            <div>
+                <label for="crate2X">Crate2 X-position:</label>
+                <input type="range" id="crate2X" min="-1" max="1" step="0.05" value="0">
+            </div>
+            <div>
+                <label for="crate3Y">Crate3 Y-position:</label>
+                <input type="range" id="crate3Y" min="-1" max="1" step="0.05" value="0">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
