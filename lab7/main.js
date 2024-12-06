@@ -12,9 +12,9 @@ const scene = new MelonEngine.Scene();
 const camera = new MelonEngine.Camera(scene, {aspectRatio: canvas.width/canvas.height});
 const renderer = new MelonEngine.Renderer(camera);
 
-const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.normalIndices, {colors: Cube.colors, normals: Cube.normals});
-const icosphereMesh = new MelonEngine.Mesh(gl, Icosphere.vertices,  Icosphere.indices, {colors: Icosphere.darkGrey, normals: Icosphere.normals});
-const torusMesh = new MelonEngine.Mesh(gl, torusMeshData.vertices, torusMeshData.indices, {colors: torusMeshData.colors, normals: torusMeshData.normals});
+const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.normalIndices, {normals: Cube.normals});
+const icosphereMesh = new MelonEngine.Mesh(gl, Icosphere.vertices,  Icosphere.indices, {normals: Icosphere.normals});
+const torusMesh = new MelonEngine.Mesh(gl, torusMeshData.vertices, torusMeshData.indices, {normals: torusMeshData.normals});
 const programInstance = new MelonEngine.ProgramInstance(gl,{normals: true}); //invokes default mode with normals
 const litCube = new MelonEngine.MeshInstance(scene, cubeMesh, programInstance, renderer, {position: [-0.5, 0, 0.5], scale: [0.7, 0.7, 0.7]});
 const litIcosphere = new MelonEngine.MeshInstance(scene, icosphereMesh, programInstance, renderer,{position: [0.5, 0, 0.5], scale: [0.3, 0.3, 0.3]})

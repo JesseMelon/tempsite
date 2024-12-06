@@ -12,8 +12,8 @@ const scene = new MelonEngine.Scene();
 const camera1 = new MelonEngine.Camera(scene, {position: [0, 4, 10], target: [0,0,0]});//31
 const renderer = new MelonEngine.Renderer(camera1);  
 
-const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.normalIndices, {colors: Cube.colors})
-const program = new MelonEngine.ProgramInstance(gl);
+const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.normalIndices, {rgbaColors: Cube.colors})
+const program = new MelonEngine.ProgramInstance(gl, {colorRGBA: true}, {} );
 
 const tankBody = new MelonEngine.MeshInstance(scene, cubeMesh, program, renderer, {sceneName: "tankBody"});//30
 

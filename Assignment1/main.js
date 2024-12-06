@@ -19,8 +19,8 @@ const scene = new MelonEngine.Scene(10);
 const camera = new MelonEngine.Camera(scene, {aspectRatio: canvas.width/canvas.height});
 const renderer = new MelonEngine.Renderer(camera);
 // Create objects
-const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.vertOnlyIndices, {colors: Cube.defaultcolors});
-const tetraMesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.indices, {colors: funTetrahedronColors})
+const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.vertOnlyIndices, {rgbaColors: Cube.defaultcolors});
+const tetraMesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.indices, {rgbaColors: funTetrahedronColors})
 const programInstance = new MelonEngine.ProgramInstance(gl); //default shader invoked (indexed)
 const cubeInstance = new MelonEngine.MeshInstance(scene, cubeMesh, programInstance, renderer, {position: [-1.5, 1, -1]});
 const cubeInstance2 = new MelonEngine.MeshInstance(scene, cubeMesh, programInstance, renderer, {position: [1.5, 1, -1]});
