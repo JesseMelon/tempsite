@@ -12,8 +12,8 @@ const scene = new MelonEngine.Scene();
 const camera = new MelonEngine.Camera(scene, {aspectRatio: canvas.width/canvas.height});
 const renderer = new MelonEngine.Renderer(camera);
 
-const mesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.indices, {colors: Pyramid.defaultcolors});
-const program = new MelonEngine.ProgramInstance(gl); //default shader invoked (indexed)
+const mesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.indices, {rgbaColors: Pyramid.defaultcolors});
+const program = new MelonEngine.ProgramInstance(gl, {colorRGBA: true}, {} ); //default shader invoked (indexed)
 const meshInstances = [
     new MelonEngine.MeshInstance(scene, mesh, program, renderer, {rotation: [-Math.PI, 0, 0]})
 ]
