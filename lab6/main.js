@@ -13,9 +13,9 @@ const camera = new MelonEngine.Camera(scene, {aspectRatio: canvas.width/canvas.h
 const renderer = new MelonEngine.Renderer(camera);
 
 const mesh = new MelonEngine.Mesh(gl, Pyramid.vertices, Pyramid.indices, {rgbaColors: Pyramid.defaultcolors});
-const program = new MelonEngine.ProgramInstance(gl, {colorRGBA: true}, {} ); //default shader invoked (indexed)
-const meshInstances = new MelonEngine.MeshInstance(scene, mesh, program, renderer, {rotation: [-Math.PI, 0, 0]}) // Delete this line and uncomment the others when done
-/*const meshInstances = [
+const program = new MelonEngine.ProgramInstance(gl, {colorRGBA: true}); //default shader invoked (indexed)
+//const meshInstances = new MelonEngine.MeshInstance(scene, mesh, program, renderer, {rotation: [-Math.PI, 0, 0]}) // Delete this line and uncomment the others when done
+const meshInstances = [
     new MelonEngine.MeshInstance(scene, mesh, program, renderer, {rotation: [-Math.PI, 0, 0]})
 ]
 const numMeshInstances = 16;
@@ -25,10 +25,10 @@ for (let i = 0; i < numMeshInstances; i++){
     const z = Math.sin(angle) * 3;
     meshInstances.push(new MelonEngine.MeshInstance(scene, mesh, program, renderer, {position: [x, 0, z], rotation: [0, Math.PI / 2 - angle, 0]}));
 }
-console.log(meshInstances[0]);*/
+console.log(meshInstances[0]);
 function draw(time = 0) {
-    // scale = Math.sin(time / 1000) * 0.25 + 1
-    // meshInstances[0].transform.setScale([scale, scale, scale]);
+    scale = Math.sin(time / 1000) * 0.25 + 1
+    meshInstances[0].transform.setScale([scale, scale, scale]);
     camera.repositionAroundTarget([menu.cameraPosition.x.value, menu.cameraPosition.y.value, menu.cameraPosition.z.value], [0,0,0], [0,1,0]);
     renderer.render(gl);
 
