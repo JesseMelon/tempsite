@@ -12,14 +12,8 @@ const scene = new MelonEngine.Scene();
 const camera = new MelonEngine.Camera(scene, {position: [0, 4, 10], target: [0,0,0]});//31
 const renderer = new MelonEngine.Renderer(camera);
 
-const customShader = new MelonEngine.ShaderComponent()
-
-const cubeMesh = new MelonEngine.Mesh(gl, 
-    [
-        MelonEngine.Mesh.AttributeType.POSITION,
-        MelonEngine.Mesh.AttributeType.VCOLORRGBA
-    ], 
-    {arrays: [Cube.vertices, Cube.colors]})
+const cubeMesh = new MelonEngine.Mesh(gl, Cube.vertices, Cube.vertOnlyIndices, {rgbaColors: Cube.defaultcolors});
+const programInstance = new MelonEngine.ProgramInstance(gl, {})
 
 // const program = new MelonEngine.ProgramInstance(gl,
 //     [
